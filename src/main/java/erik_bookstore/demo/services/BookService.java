@@ -22,6 +22,10 @@ public class BookService {
     public Optional<Book> findBookById(String id) {
         return bookRepository.findById(id);
     }
+    public String deleteBook(String id) {
+        bookRepository.deleteById(id);
+        return "Book '" + id + "' has been deleted.";
+    }
 
 
 

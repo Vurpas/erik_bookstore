@@ -29,6 +29,11 @@ public class BookController {
     public Optional<Book> findBookById(@PathVariable String id) {
         return bookService.findBookById(id);
     }
+    // DELETE post by id
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public String deleteBook(@PathVariable String id) {
+        return bookService.deleteBook(id);
+    }
 
 
 
