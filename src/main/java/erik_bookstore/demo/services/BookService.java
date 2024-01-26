@@ -26,6 +26,9 @@ public class BookService {
         bookRepository.deleteById(id);
         return "Book '" + id + "' has been deleted.";
     }
+    public Book updateBook(Book book) {
+        return bookRepository.save(book);
+    }
 
 
 

@@ -29,10 +29,15 @@ public class BookController {
     public Optional<Book> findBookById(@PathVariable String id) {
         return bookService.findBookById(id);
     }
-    // DELETE post by id
+    // DELETE book by id
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable String id) {
         return bookService.deleteBook(id);
+    }
+    // PUT update a book based on id
+    @PutMapping("/{id}")
+    public Book updateBook(@RequestBody Book book) {
+        return bookService.updateBook(book);
     }
 
 
