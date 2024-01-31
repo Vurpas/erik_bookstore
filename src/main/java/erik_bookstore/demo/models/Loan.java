@@ -15,6 +15,7 @@ public class Loan {
     private String loanedByUserId;
     @CreatedDate
     private Date date_of_loan;
+    @CreatedDate
     private LocalDate return_date = LocalDate.now().plusDays(14);
 
     public Loan () {
@@ -35,7 +36,4 @@ public class Loan {
         return book_id;
     }
 
-    public void setReturn_date(LocalDate return_date) {
-        this.return_date = return_date;
-    }
 }
