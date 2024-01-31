@@ -9,35 +9,35 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/loans")
 public class LoanController {
     @Autowired
     LoanService loanService;
 
     // POST create loan
-    @PostMapping("/loans")
+    @PostMapping
     public Loan createLoan(@RequestBody Loan loan) {
         return loanService.createLoan(loan);
     }
     // GET list of all loans
-    @GetMapping("/loans")
+    @GetMapping
     public List<Loan> allUsers() {
         return loanService.findAll();
     }
     // GET loan by ID
-    @GetMapping("/loans/{id}")
+    @GetMapping("/{id}")
     public Optional<Loan> findLoanById(@PathVariable String id) {
         return loanService.findLoanById(id);
     }
     // DELETE loan by ID
-    @DeleteMapping("/loans/{id}")
+    @DeleteMapping("/{id}")
     public String deleteLoan(@PathVariable String id) {
         loanService.deleteById(id);
 
         return "Loan deleted.";
     }
     // PUT update loan by ID
-    @PutMapping("/loans/{id}")
+    @PutMapping("/{id}")
     public Loan updateLoan(@RequestBody Loan loan) {
         return loanService.updateLoan(loan);
     }
