@@ -18,7 +18,6 @@ public class Book {
     public Book() {
     }
 
-
     public String getId() {
         return id;
     }
