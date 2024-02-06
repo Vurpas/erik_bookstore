@@ -6,6 +6,6 @@ README FOR erik_bookstore
 4. Open up intelliJ or other IDE of your choice that runs java.
 5. Open up the project from where you saved it in your computer.
 6. Run application.
-7. Open up postman.
+7. Open postman.
 8. Use the requests in the following collection to test the API: https://documenter.getpostman.com/view/32298029/2s9YywgLFf
 9. Good luck.
