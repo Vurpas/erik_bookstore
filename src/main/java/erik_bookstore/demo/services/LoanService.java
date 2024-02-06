@@ -14,8 +14,10 @@ public class LoanService {
     @Autowired
     LoanRepository loanRepository;
 
+
     public Loan createLoan (Loan loan) {
         return loanRepository.save(loan);
+
     }
     public List<Loan> findAll() {
         return loanRepository.findAll();
@@ -27,6 +29,7 @@ public class LoanService {
         loanRepository.deleteById(id);
     }
     public Loan updateLoan(Loan loan) {
+
         return loanRepository.save(loan);
     }
 }

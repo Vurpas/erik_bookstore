@@ -17,6 +17,7 @@ public class LoanController {
     // POST create loan
     @PostMapping
     public Loan createLoan(@RequestBody Loan loan) {
+
         return loanService.createLoan(loan);
     }
     // GET list of all loans
@@ -37,7 +38,7 @@ public class LoanController {
         return "Loan deleted.";
     }
     // PUT update loan by ID
-    @PutMapping("/{id}")
+    @PutMapping
     public Loan updateLoan(@RequestBody Loan loan) {
         return loanService.updateLoan(loan);
     }

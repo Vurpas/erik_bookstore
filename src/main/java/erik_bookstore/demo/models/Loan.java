@@ -1,11 +1,9 @@
 package erik_bookstore.demo.models;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Document(collection = "loans")
 public class Loan {
@@ -13,10 +11,10 @@ public class Loan {
     private String id;
     private String book_id;
     private String loanedByUserId;
-    @CreatedDate
-    private Date date_of_loan;
-    @CreatedDate
-    private LocalDate return_date = LocalDate.now().plusDays(14);
+
+    private LocalDate date_of_loan = LocalDate.now();
+
+    private LocalDate returnBy = LocalDate.now().plusDays(10);
 
     public Loan () {
     }
@@ -26,14 +24,22 @@ public class Loan {
     public String getLoanedByUserId() {
         return loanedByUserId;
     }
-    public Date getDate_of_loan() {
+    public LocalDate getDate_of_loan() {
         return date_of_loan;
     }
-    public LocalDate getReturn_Date() {
-        return return_date;
+    public LocalDate getReturnBy() {
+        return returnBy;
     }
     public String getBook_id() {
         return book_id;
     }
 
+
+    public void setDate_of_loan(LocalDate date_of_loan) {
+        this.date_of_loan = date_of_loan;
+    }
+
+    public void setReturnBy(LocalDate return_date) {
+        this.returnBy = return_date;
+    }
 }
