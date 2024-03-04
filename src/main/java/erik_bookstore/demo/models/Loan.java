@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class Loan {
     @Id
     private String id;
-    private String book_id;
-    private String loanedByUserId;
+    private Book book_id;
+    private User loanedByUserId;
 
     private LocalDate date_of_loan = LocalDate.now();
 
@@ -21,7 +21,7 @@ public class Loan {
     public String getId() {
         return id;
     }
-    public String getLoanedByUserId() {
+    public User getLoanedByUserId() {
         return loanedByUserId;
     }
     public LocalDate getDate_of_loan() {
@@ -30,7 +30,7 @@ public class Loan {
     public LocalDate getReturnBy() {
         return returnBy;
     }
-    public String getBook_id() {
+    public Book getBook_id() {
         return book_id;
     }
 
