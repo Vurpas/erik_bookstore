@@ -1,6 +1,7 @@
 package erik_bookstore.demo.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -9,7 +10,9 @@ import java.time.LocalDate;
 public class Loan {
     @Id
     private String id;
+    @DBRef
     private Book book_id;
+    @DBRef
     private User loanedByUserId;
 
     private LocalDate date_of_loan = LocalDate.now();
@@ -18,6 +21,12 @@ public class Loan {
 
     public Loan () {
     }
+
+    public Loan(Book book, User user) {
+        this.book_id = book;
+        this.loanedByUserId = user;
+    }
+
     public String getId() {
         return id;
     }
@@ -41,5 +50,17 @@ public class Loan {
 
     public void setReturnBy(LocalDate return_date) {
         this.returnBy = return_date;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setBook_id(Book book_id) {
+        this.book_id = book_id;
+    }
+
+    public void setLoanedByUserId(User loanedByUserId) {
+        this.loanedByUserId = loanedByUserId;
     }
 }

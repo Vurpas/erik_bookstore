@@ -1,8 +1,13 @@
 package erik_bookstore.demo.controllers;
 
+import erik_bookstore.demo.DTO.LoanDTO;
 import erik_bookstore.demo.models.Loan;
+import erik_bookstore.demo.repository.BookRepository;
+import erik_bookstore.demo.repository.UserRepository;
 import erik_bookstore.demo.services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,12 +18,20 @@ import java.util.Optional;
 public class LoanController {
     @Autowired
     LoanService loanService;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    BookRepository bookRepository;
 
     // POST create loan
     @PostMapping
-    public Loan createLoan(@RequestBody Loan loan) {
-
-        return loanService.createLoan(loan);
+    public ResponseEntity<Loan> createLoan(@RequestBody LoanDTO loanDTO) {
+        if (userRepository.existsById((loanDTO.getLoanedByUserId()))
+                && bookRepository.existsById((loanDTO.getBook_id()))) {
+            Loan loan = loanService.createLoan(loanDTO);
+            return new ResponseEntity<>(loan, HttpStatus.CREATED);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
     // GET list of all loans
     @GetMapping
