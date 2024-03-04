@@ -23,7 +23,7 @@ public class LoanController {
     @Autowired
     BookRepository bookRepository;
 
-    // POST create loan
+    // POST create loan - UPDATED with function to check if id's exists
     @PostMapping
     public ResponseEntity<Loan> createLoan(@RequestBody LoanDTO loanDTO) {
         if (userRepository.existsById((loanDTO.getLoanedByUserId()))
@@ -31,7 +31,7 @@ public class LoanController {
             Loan loan = loanService.createLoan(loanDTO);
             return new ResponseEntity<>(loan, HttpStatus.CREATED);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     // GET list of all loans
     @GetMapping
